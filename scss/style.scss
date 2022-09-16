@@ -245,6 +245,7 @@ $tablet-width: 768px;
     background-color: white;
 
     // border-radius: 3px;
+    transition: $transition-basic;
 
     &.winner {
         &::before {
@@ -313,6 +314,7 @@ $tablet-width: 768px;
     }
 
     &.not-ready {
+        transition: $transition-basic;
         border: 1px solid rgba(29, 24, 24, 0.342);
         background-color: rgba(36, 35, 35, 0.74);
     }
