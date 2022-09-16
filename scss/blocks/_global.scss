@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-body {
+    height: 100vh;
+    background-color: black;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.main-section {
+    padding: 0 0 15px 0;
+    height: 100vh;
+    overflow: auto;
+
+    @media (min-width: $tablet-width) {
+        padding: 0 0 24px 0;
+    }
+}
