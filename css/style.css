@@ -44,15 +44,15 @@
   background-size: 40px 40px;
   background-color: white;
   border-radius: 50%;
-  transition: all 200ms;
+  transition: all 500ms;
 }
 .tournament__button-play-match:hover {
-  transition: all 200ms;
+  transition: all 500ms;
   background-color: red;
   transform: scale(1.1);
 }
 .tournament__button-play-match.hidden {
-  transition: all 200ms;
+  transition: all 500ms;
   transform: scale(0);
   visibility: hidden;
 }
@@ -130,6 +130,9 @@
   }
 }
 
+.tournament__round--one .tournament__team-name {
+  display: none;
+}
 .tournament__round--one.west-side {
   grid-column: 1/2;
   grid-row: 1/2;
@@ -173,8 +176,9 @@
 
 .tournament__team {
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
   padding: 6px;
+  padding-right: 25px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -184,35 +188,15 @@
   border: 1px solid gray;
   position: relative;
   background-color: white;
-  transition: all 200ms;
-}
-.tournament__team.winner::before {
-  position: absolute;
-  content: "";
-  top: calc(50% - 8px);
-  left: 5px;
-  width: 16px;
-  height: 16px;
   background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../img/winner.svg);
   background-size: contain;
-  -webkit-animation: pulse 2s linear infinite running;
-          animation: pulse 2s linear infinite running;
-  display: none;
+  background-size: 25px 25px;
+  background-position: right center;
+  transition: all 2000ms;
 }
-@media (min-width: 768px) {
-  .tournament__team.winner {
-    padding-left: 30px;
-  }
-  .tournament__team.winner::before {
-    display: block;
-  }
-}
-.tournament__team.champion {
-  transform: scale(1.1);
-}
-.tournament__team.champion::after {
+.tournament__team::after {
+  pointer-events: none;
+  opacity: 0;
   position: absolute;
   content: "";
   bottom: calc(100% + 10px);
@@ -224,12 +208,20 @@
   background-color: transparent;
   background-image: url(../img/winner-cup-2.png);
   background-size: contain;
+  z-index: -10;
+}
+.tournament__team.champion {
+  transform: scale(1.1);
+}
+.tournament__team.champion::after {
+  opacity: 1;
+  transition: opacity 1200ms;
 }
 .tournament__team.played {
   background-color: rgb(235, 233, 233);
 }
 .tournament__team.looser {
-  transition: all 600ms;
+  transition: all 1200ms delay 200ms;
   border: 1px solid rgba(175, 110, 110, 0.301);
   background-color: rgba(175, 110, 110, 0.13);
   transform: scale(0.9);
@@ -238,12 +230,115 @@
 .tournament__team.looser .tournament__team-score {
   color: red;
 }
+.tournament__team.battle {
+  -webkit-animation: shake 200ms linear running;
+          animation: shake 200ms linear running;
+}
 .tournament__team.not-ready {
   transition: all 200ms;
   border: 1px solid rgba(29, 24, 24, 0.342);
   background-color: rgba(36, 35, 35, 0.74);
 }
 
+@-webkit-keyframes shake-rectangle-01 {
+  0% {
+    transform: translate(-1px, 9px) rotate(14deg);
+  }
+  33% {
+    transform: translate(-1px, 11px) rotate(16deg);
+  }
+  66% {
+    transform: translate(1px, 11px) rotate(14deg);
+  }
+  100% {
+    transform: translate(1px, 9px) rotate(16deg);
+  }
+}
+
+@keyframes shake-rectangle-01 {
+  0% {
+    transform: translate(-1px, 9px) rotate(14deg);
+  }
+  33% {
+    transform: translate(-1px, 11px) rotate(16deg);
+  }
+  66% {
+    transform: translate(1px, 11px) rotate(14deg);
+  }
+  100% {
+    transform: translate(1px, 9px) rotate(16deg);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
 @-webkit-keyframes battle {
   0% {
     transform: scale(1) translate(0, 20px) rotate(0);
@@ -264,7 +359,6 @@
     transform: scale(1.2) rotate(-45deg);
   }
 }
-
 @keyframes battle {
   0% {
     transform: scale(1) translate(0, 20px) rotate(0);
@@ -321,10 +415,10 @@
 }
 .tournament__team-input {
   display: inline;
+  font-size: 10px;
   height: 100%;
-  width: auto;
+  width: 100%;
   padding: 0;
-  padding-left: 4px;
   border: 0;
   background-color: transparent;
 }

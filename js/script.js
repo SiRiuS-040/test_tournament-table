@@ -1,5 +1,86 @@
 
-
+let TEAM_DATA = [
+    {
+        id: "1",
+        name: "Участник 1",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "2",
+        name: "Участник 2",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "3",
+        name: "Участник 3",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "4",
+        name: "Участник 4",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "5",
+        name: "Участник 5",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "6",
+        name: "Участник 6",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "7",
+        name: "Участник 7",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "8",
+        name: "Участник 8",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "9",
+        name: "Участник 9",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "10",
+        name: "Участник 11",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "11",
+        name: "Участник 11",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "12",
+        name: "Участник 12",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "13",
+        name: "Участник 13",
+        logo: "https://papik.pro/uploads/posts/2021-11/thumbs/1636129744_53-papik-pro-p-krutie-logotipi-foto-55.png"
+    },
+    {
+        id: "14",
+        name: "Участник 15",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "15",
+        name: "Участник 15",
+        logo: "https://fire-logo.ru/img/mascots.png"
+    },
+    {
+        id: "16",
+        name: "Участник 16",
+        logo: "https://papik.pro/uploads/posts/2021-11/thumbs/1636129744_53-papik-pro-p-krutie-logotipi-foto-55.png"
+    },
+]
 
 
 
@@ -15,7 +96,10 @@ document.addEventListener('DOMContentLoaded', function (evt) {
         teamsArr.forEach(team => {
             let teamNameInput = team.querySelector('.tournament__team-input');
             let teamName = team.querySelector('.tournament__team-name');
-            console.log(teamName.textContent);
+            let teamDataNumber = team.getAttribute('data-team');
+            // console.log(teamName.textContent);
+
+
 
             if (teamName.textContent == '') {
                 team.classList.add('not-ready')
@@ -24,39 +108,52 @@ document.addEventListener('DOMContentLoaded', function (evt) {
                 team.classList.add('ready')
             }
 
-            if (teamNameInput) {
-                if (teamNameInput.value == '') {
-                    team.classList.remove('ready')
-                    team.classList.add('not-ready')
+            // if (teamNameInput) {
+            //     if (teamNameInput.value == '') {
+            //         team.classList.remove('ready')
+            //         team.classList.add('not-ready')
 
-                    // console.log('нет команды');
-                } else {
-                    team.classList.add('ready')
-                    team.classList.remove('not-ready')
+            //         // console.log('нет команды');
+            //     } else {
+            //         team.classList.add('ready')
+            //         team.classList.remove('not-ready')
+            //     }
+            // }
+
+
+
+            if (team.closest('.tournament__round--one')) {
+                if (TEAM_DATA) {
+                    for (let key in TEAM_DATA) {
+                        if (teamDataNumber == TEAM_DATA[key].id) {
+                            teamNameInput.value = TEAM_DATA[key].name
+                            teamNameInput.setAttribute('data-default', TEAM_DATA[key].name)
+                            teamName.textContent = TEAM_DATA[key].name
+                            team.style.backgroundImage = `url(${TEAM_DATA[key].logo})`;
+
+                            // team.setAttribute('data-logo', TEAM_DATA[key].logo)
+
+                        }
+                    }
                 }
             }
-
-
             // 
-
-            team.classList.add('battle')
+            // team.classList.add('battle')
 
         });
 
         let newTeamArr = [...teamsArr]
-        console.log(newTeamArr[0]);
+        // console.log(newTeamArr[0]);
 
         if (newTeamArr[0].classList.contains('ready') && newTeamArr[1].classList.contains('ready')) {
             buttonMatch.classList.remove('hidden')
         } else {
             buttonMatch.classList.add('hidden')
         }
-
     });
 })
 
 document.addEventListener('click', function (evt) {
-
     if (evt.target && evt.target.classList.contains('tournament__button-play-match')) {
         console.log('играем матч');
         let target = evt.target
@@ -71,11 +168,26 @@ document.addEventListener('click', function (evt) {
             teamArr.forEach(team => {
                 let teamScore = team.querySelector('.tournament__team-score')
                 teamScore.textContent = getRandomInt(0, 10)
+
+                team.classList.add('battle')
+                // team.classList.remove('battle')
             });
+
             let firstTeamScore = teamArr[0].querySelector('.tournament__team-score').textContent;
             let SecondTeamScore = teamArr[1].querySelector('.tournament__team-score').textContent;
+
+
             if (firstTeamScore == SecondTeamScore) {
                 console.log('счет одинаковый');
+
+                setTimeout(() => {
+                    teamArr.forEach(team => {
+
+                        team.classList.remove('battle')
+                    });
+                }, 300);
+
+
 
             } else if (firstTeamScore > SecondTeamScore) {
                 teamArr[0].classList.add('winner')
@@ -123,6 +235,7 @@ document.addEventListener('click', function (evt) {
                         // console.log(Number(currentRound));
                         if (currentMatch == findTeamID && (Number(currentRound) + 1 == findMatchRound)) {
                             console.log('двигаем подедителя');
+                            findTeemm.style = team.getAttribute('style');
                             findTeamName.textContent = setTeamName;
                             findTeemm.classList.remove('not-ready')
                             findTeemm.classList.add('ready')
@@ -174,7 +287,6 @@ document.addEventListener('click', function (evt) {
                 getScore()
                 mooveWinner()
                 unblockMatchButton()
-
                 showChampion()
 
             } else {
@@ -199,6 +311,44 @@ document.addEventListener('click', function (evt) {
 
         // console.log(parent);
 
+
+    }
+
+
+})
+
+document.addEventListener('input', function (evt) {
+
+    // ввод своих названий команд
+
+    if (evt.target && evt.target.classList.contains('tournament__team-input')) {
+        console.log('ввод своих названий команд');
+        let target = evt.target
+
+        let parentTeam = target.closest('.tournament__team')
+        let parentTeamName = parentTeam.querySelector('.tournament__team-name')
+        parentTeamName.textContent = target.value;
+
+
+    }
+
+
+})
+
+document.addEventListener('change', function (evt) {
+    // ввод своих названий команд
+    if (evt.target && evt.target.classList.contains('tournament__team-input')) {
+        console.log('ввод своих названий команд');
+        let target = evt.target
+        let parentTeam = target.closest('.tournament__team')
+        let parentTeamName = parentTeam.querySelector('.tournament__team-name')
+        parentTeamName.textContent = target.value;
+
+        // проверка на пустое поле
+
+        if (target.value.length == 0) {
+            target.value = target.getAttribute('data-default');
+        }
 
     }
 

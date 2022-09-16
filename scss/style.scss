@@ -13,6 +13,8 @@
 }
 
 $transition-basic: all 200ms;
+$transition-long: all 500ms;
+
 $tablet-width: 768px;
 
 .main-section {
@@ -58,16 +60,16 @@ $tablet-width: 768px;
     background-color: white;
     border-radius: 50%;
 
-    transition: $transition-basic;
+    transition: $transition-long;
 
     &:hover {
-        transition: $transition-basic;
+        transition: $transition-long;
         background-color: red;
         transform: scale(1.1);
     }
 
     &.hidden {
-        transition: $transition-basic;
+        transition: $transition-long;
         transform: scale(0);
         visibility: hidden;
     }
@@ -180,6 +182,10 @@ $tablet-width: 768px;
 }
 
 .tournament__round--one {
+    & .tournament__team-name {
+        display: none;
+    }
+
     &.west-side {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
@@ -232,8 +238,9 @@ $tablet-width: 768px;
 
 .tournament__team {
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px;
     padding: 6px;
+    padding-right: 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -244,52 +251,87 @@ $tablet-width: 768px;
     position: relative;
     background-color: white;
 
+    // background-image: url(https://fire-logo.ru/img/mascots.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 25px 25px;
+    background-position: right center;
+
     // border-radius: 3px;
-    transition: $transition-basic;
+    // transition: $transition-basic;
+    transition: all 2000ms;
+
+    &::after {
+        pointer-events: none;
+        // display: none;
+        opacity: 0;
+        // transition: opacity 1200ms;
+        position: absolute;
+        content: "";
+        bottom: calc(100% + 10px);
+        left: calc(50% - 40px);
+        width: 80px;
+        height: 120px;
+        // border: 1px solid red;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        background-image: url(../img/winner-cup-2.png);
+        background-size: contain;
+
+        z-index: -10;
+    }
 
     &.winner {
-        &::before {
-            position: absolute;
-            content: "";
-            top: calc(50% - 8px);
-            left: 5px;
-            width: 16px;
-            height: 16px;
-            // border: 1px solid red;
+        // &::before {
+        //     position: absolute;
+        //     content: "";
+        //     top: calc(50% - 8px);
+        //     left: 5px;
+        //     width: 16px;
+        //     height: 16px;
+        //     // border: 1px solid red;
 
-            background-repeat: no-repeat;
-            background-position: center;
-            background-image: url(../img/winner.svg);
-            background-size: contain;
+        //     background-repeat: no-repeat;
+        //     background-position: center;
+        //     background-image: url(../img/winner.svg);
+        //     background-size: contain;
 
-            animation: pulse 2s linear infinite running;
-            display: none;
-        }
+        //     animation: pulse 2s linear infinite running;
+        //     display: none;
+        // }
 
         @media (min-width: $tablet-width) {
-            padding-left: 30px;
-            &::before {
-                display: block;
-            }
+            // padding-left: 25px;
+            // &::before {
+            //     display: block;
+            // }
         }
     }
 
     &.champion {
+        // transition: all 1200ms;
         transform: scale(1.1);
-        &::after {
-            position: absolute;
-            content: "";
-            bottom: calc(100% + 10px);
-            left: calc(50% - 40px);
-            width: 80px;
-            height: 120px;
-            // border: 1px solid red;
 
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: transparent;
-            background-image: url(../img/winner-cup-2.png);
-            background-size: contain;
+        &::after {
+            opacity: 1;
+            transition: opacity 1200ms;
+            // z-index: auto;
+            // display: block;
+            // position: absolute;
+            // content: "";
+            // bottom: calc(100% + 10px);
+            // left: calc(50% - 40px);
+            // width: 80px;
+            // height: 120px;
+            // // border: 1px solid red;
+
+            // background-repeat: no-repeat;
+            // background-position: center;
+            // background-color: transparent;
+            // background-image: url(../img/winner-cup-2.png);
+            // background-size: contain;
         }
     }
 
@@ -301,7 +343,8 @@ $tablet-width: 768px;
         & .tournament__team-score {
             color: red;
         }
-        transition: all 600ms;
+
+        transition: all 1200ms delay 200ms;
         border: 1px solid rgba(175, 110, 110, 0.301);
         background-color: rgba(175, 110, 110, 0.13);
         // color: white;
@@ -310,13 +353,64 @@ $tablet-width: 768px;
     }
 
     &.battle {
-        // animation: battle 1000ms linear infinite running;
+        animation: shake 200ms linear running;
     }
 
     &.not-ready {
         transition: $transition-basic;
         border: 1px solid rgba(29, 24, 24, 0.342);
         background-color: rgba(36, 35, 35, 0.74);
+    }
+}
+
+@keyframes shake-rectangle-01 {
+    0% {
+        transform: translate(-1px, 9px) rotate(14deg);
+    }
+    33% {
+        transform: translate(-1px, 11px) rotate(16deg);
+    }
+    66% {
+        transform: translate(1px, 11px) rotate(14deg);
+    }
+    100% {
+        transform: translate(1px, 9px) rotate(16deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
     }
 }
 
@@ -382,10 +476,11 @@ $tablet-width: 768px;
 
 .tournament__team-input {
     display: inline;
+    font-size: 10px;
     height: 100%;
-    width: auto;
+    width: 100%;
     padding: 0;
-    padding-left: 4px;
+    // padding-left: 4px;
     border: 0;
     background-color: transparent;
 }
