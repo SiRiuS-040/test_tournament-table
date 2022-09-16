@@ -13,14 +13,29 @@ document.addEventListener('DOMContentLoaded', function (evt) {
 
         let teamsArr = matchUp.querySelectorAll('.tournament__team')
         teamsArr.forEach(team => {
+            let teamNameInput = team.querySelector('.tournament__team-input');
             let teamName = team.querySelector('.tournament__team-name');
             console.log(teamName.textContent);
+
             if (teamName.textContent == '') {
                 team.classList.add('not-ready')
                 // console.log('нет команды');
             } else {
                 team.classList.add('ready')
             }
+
+            if (teamNameInput) {
+                if (teamNameInput.value == '') {
+                    team.classList.remove('ready')
+                    team.classList.add('not-ready')
+
+                    // console.log('нет команды');
+                } else {
+                    team.classList.add('ready')
+                    team.classList.remove('not-ready')
+                }
+            }
+
 
             // 
 
