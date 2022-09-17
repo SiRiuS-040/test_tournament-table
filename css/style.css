@@ -20,6 +20,8 @@
 @media (min-width: 768px) {
   .main-section {
     padding: 0 0 24px 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
   }
 }
 
@@ -85,7 +87,6 @@
 .tournament__table {
   margin-top: 25px;
 }
-
 .tournament__legend-round {
   font-weight: 700;
   display: flex;
@@ -192,7 +193,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-size: 25px 25px;
-  background-position: right center;
+  background-position: calc(100% - 5px) center;
   transition: all 2000ms;
 }
 .tournament__team::after {

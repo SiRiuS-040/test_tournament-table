@@ -78,7 +78,7 @@ let TEAM_DATA = [
     {
         id: "16",
         name: "Team 4",
-        logo: "https://papik.pro/uploads/posts/2022-01/thumbs/1643624583_41-papik-pro-p-logotip-cherep-41.png"
+        logo: "https://www.megaflag.ru/sites/default/files/styles/h_100/public/images/shop/products/flag_england1.jpg?itok=DSeHuvmb"
     },
 ]
 let MAX_GAME_SCORE = 10;

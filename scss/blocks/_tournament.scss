@@ -60,6 +60,12 @@
 
 .tournament__table {
     margin-top: 25px;
+
+    @media (min-width: $tablet-width) {
+        // align-self: center;
+        // justify-self: center;
+        // margin: auto 0;
+    }
 }
 
 .tournament__legend-round {
@@ -189,7 +195,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-size: 25px 25px;
-    background-position: right center;
+    background-position: calc(100% - 5px) center;
     transition: all 2000ms;
 
     &::after {
