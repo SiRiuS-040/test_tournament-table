@@ -20,8 +20,6 @@
 @media (min-width: 768px) {
   .main-section {
     padding: 0 0 24px 0;
-    display: grid;
-    grid-template-rows: auto 1fr;
   }
 }
 
@@ -510,6 +508,8 @@
   display: block;
   position: absolute;
   visibility: hidden;
+  width: 0;
+  height: 0;
   z-index: -1000;
   pointer-events: none;
 }

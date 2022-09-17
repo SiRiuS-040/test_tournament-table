@@ -43,6 +43,7 @@
     padding: 0 15px;
 
     @media (min-width: $tablet-width) {
+        // width: 100vw;
         grid-template-columns: 1fr 1fr 1fr 3fr 1fr 1fr 1fr;
     }
 }
@@ -487,6 +488,8 @@
     display: block;
     position: absolute;
     visibility: hidden;
+    width: 0;
+    height: 0;
     z-index: -1000;
     pointer-events: none;
 }
