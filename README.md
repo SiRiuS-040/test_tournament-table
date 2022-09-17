@@ -1,5 +1,7 @@
 # test_tournament-table
 
+https://sirius-040.github.io/test_tournament-table/
+
 Тестовое задание
 
 Адаптивная турнирная сетка на 16 команд
