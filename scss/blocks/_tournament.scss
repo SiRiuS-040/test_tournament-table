@@ -193,8 +193,11 @@
     transition: all 2000ms;
 
     &::after {
-        pointer-events: none;
         opacity: 0;
+        z-index: -10;
+        // display: none;
+        pointer-events: none;
+
         position: absolute;
         content: "";
         bottom: calc(100% + 10px);
@@ -206,14 +209,13 @@
         background-color: transparent;
         background-image: url(../img/winner-cup-2.png);
         background-size: contain;
-
-        z-index: -10;
     }
 
     &.champion {
-        transform: scale(1.1);
+        // transform: scale(1.1);
 
         &::after {
+            // display: block;
             opacity: 1;
             transition: opacity 1200ms;
         }
@@ -310,10 +312,12 @@
 
 .tournament__team-input {
     display: inline;
-    font-size: 10px;
+    font-size: 8px;
+    // text-transform: uppercase;
     height: 100%;
     width: 100%;
     padding: 0;
+    padding-right: 4px;
     border: 0;
     background-color: transparent;
 }
