@@ -24,9 +24,9 @@
     @media (min-width: $tablet-width) {
         padding: 0 0 24px 0;
         //
-        // display: grid;
-        // grid-template-columns: 1fr;
-        // grid-template-rows: auto 1fr;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
 
         // align-items: center;
         // justify-content: center;
