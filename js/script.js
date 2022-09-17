@@ -43,37 +43,37 @@ let TEAM_DATA = [
     {
         id: "9",
         name: "Team 9",
-        logo: "http://www.world-globe.ru/files/flags/russia_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/rosija-prapor-2021-ru-300x200.png"
     },
     {
         id: "10",
         name: "Team 10",
-        logo: "http://www.world-globe.ru/files/flags/luxembourg_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/hrecija-prapor-2021-ru-300x200.png"
     },
     {
         id: "11",
         name: "Team 11",
-        logo: "http://www.world-globe.ru/files/flags/spain_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/velyka-brytanija-prapor-2021-ru-300x150.png"
     },
     {
         id: "12",
         name: "Team 12",
-        logo: "http://www.world-globe.ru/files/flags/iceland_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/nimechchyna-prapor-2021-ru-300x180.png"
     },
     {
         id: "13",
         name: "Team 13",
-        logo: "http://www.world-globe.ru/files/flags/germany_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/belqhija-prapor-2021-ru-300x260.png"
     },
     {
         id: "14",
         name: "Team 14",
-        logo: "http://www.world-globe.ru/files/flags/bulgaria_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/bilorusq-prapor-2021-ru-300x150.png"
     },
     {
         id: "15",
         name: "Team 15",
-        logo: "http://www.world-globe.ru/files/flags/austria_l.png"
+        logo: "https://merkator.org.ua/wp-content/uploads/2021/12/avstrija-prapor-2021-ru-300x200.png"
     },
     {
         id: "16",
