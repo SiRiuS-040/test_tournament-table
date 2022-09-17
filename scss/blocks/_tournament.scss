@@ -179,10 +179,10 @@
 }
 
 .tournament__team {
-    cursor: pointer;
+    // cursor: pointer;
     font-size: 10px;
     padding: 6px;
-    padding-right: 25px;
+    padding-right: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -201,7 +201,6 @@
     &::after {
         opacity: 0;
         z-index: -10;
-        // display: none;
         pointer-events: none;
 
         position: absolute;
@@ -218,10 +217,7 @@
     }
 
     &.champion {
-        // transform: scale(1.1);
-
         &::after {
-            // display: block;
             opacity: 1;
             transition: opacity 1200ms;
         }
@@ -474,4 +470,23 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right center;
+}
+
+.tournament__team-logo-label {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 38px;
+    background-color: transparent;
+}
+
+.tournament__team-logo-input {
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    z-index: -1000;
+    pointer-events: none;
 }

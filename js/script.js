@@ -22,62 +22,62 @@ let TEAM_DATA = [
     },
     {
         id: "5",
-        name: "Team 1",
+        name: "Team 5",
         logo: "https://fire-logo.ru/img/mascots.png"
     },
     {
         id: "6",
-        name: "Team 2",
+        name: "Team 6",
         logo: "https://papik.pro/uploads/posts/2021-11/thumbs/1636129744_53-papik-pro-p-krutie-logotipi-foto-55.png"
     },
     {
         id: "7",
-        name: "Team 3",
+        name: "Team 7",
         logo: "https://i.imgur.com/CJyhIwX.png"
     },
     {
         id: "8",
-        name: "Team 4",
+        name: "Team 8",
         logo: "https://papik.pro/uploads/posts/2022-01/thumbs/1643624583_41-papik-pro-p-logotip-cherep-41.png"
     },
     {
         id: "9",
-        name: "Team 1",
-        logo: "https://fire-logo.ru/img/mascots.png"
+        name: "Team 9",
+        logo: "http://www.world-globe.ru/files/flags/russia_l.png"
     },
     {
         id: "10",
-        name: "Team 2",
-        logo: "https://papik.pro/uploads/posts/2021-11/thumbs/1636129744_53-papik-pro-p-krutie-logotipi-foto-55.png"
+        name: "Team 10",
+        logo: "http://www.world-globe.ru/files/flags/luxembourg_l.png"
     },
     {
         id: "11",
-        name: "Team 3",
-        logo: "https://i.imgur.com/CJyhIwX.png"
+        name: "Team 11",
+        logo: "http://www.world-globe.ru/files/flags/spain_l.png"
     },
     {
         id: "12",
-        name: "Team 4",
-        logo: "https://papik.pro/uploads/posts/2022-01/thumbs/1643624583_41-papik-pro-p-logotip-cherep-41.png"
+        name: "Team 12",
+        logo: "http://www.world-globe.ru/files/flags/iceland_l.png"
     },
     {
         id: "13",
-        name: "Team 1",
-        logo: "https://fire-logo.ru/img/mascots.png"
+        name: "Team 13",
+        logo: "http://www.world-globe.ru/files/flags/germany_l.png"
     },
     {
         id: "14",
-        name: "Team 2",
-        logo: "https://papik.pro/uploads/posts/2021-11/thumbs/1636129744_53-papik-pro-p-krutie-logotipi-foto-55.png"
+        name: "Team 14",
+        logo: "http://www.world-globe.ru/files/flags/bulgaria_l.png"
     },
     {
         id: "15",
-        name: "Team 3",
-        logo: "https://i.imgur.com/CJyhIwX.png"
+        name: "Team 15",
+        logo: "http://www.world-globe.ru/files/flags/austria_l.png"
     },
     {
         id: "16",
-        name: "Team 4",
+        name: "Team 16",
         logo: "https://www.megaflag.ru/sites/default/files/styles/h_100/public/images/shop/products/flag_england1.jpg?itok=DSeHuvmb"
     },
 ]
@@ -233,6 +233,15 @@ document.addEventListener('click', function (evt) {
         }
         startMatch();
     }
+
+
+
+
+
+
+
+
+
 })
 
 document.addEventListener('input', function (evt) {
@@ -262,5 +271,38 @@ document.addEventListener('change', function (evt) {
         if (target.value.length == 0) {
             target.value = target.getAttribute('data-default');
         }
+    }
+
+
+
+    // ввод своих названий команд
+    if (evt.target && evt.target.classList.contains('tournament__team-logo-input')) {
+        let target = evt.target
+        let fileLength = 0;
+        let parentTeam = target.closest('.tournament__team')
+
+        function upload() {
+            let files = [];
+            const changeHandler = event => {
+                if (!event.target.files.length) {
+                    return
+                }
+                files = Array.from(event.target.files);
+                files.forEach(file => {
+                    if (!file.type.match('image')) {
+                        return
+                    }
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                        console.log(ev.target.result);
+                        parentTeam.style.backgroundImage = `url(${ev.target.result})`;
+                    }
+                    reader.readAsDataURL(file);
+                });
+                fileLength = files.length
+            }
+            changeHandler(evt);
+        };
+        upload();
     }
 })
