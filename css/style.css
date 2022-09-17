@@ -23,6 +23,15 @@
   }
 }
 
+.visiually-hidden {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: -1000;
+  height: 0;
+  width: 0;
+}
+
 .tournament__button-wrapper {
   width: 100%;
   display: flex;
@@ -115,7 +124,7 @@
   }
 }
 
-.tournament-table__wrapper {
+.tournament__table-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;

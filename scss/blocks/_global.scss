@@ -32,3 +32,12 @@
         // justify-content: center;
     }
 }
+
+.visiually-hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: -1000;
+    height: 0;
+    width: 0;
+}

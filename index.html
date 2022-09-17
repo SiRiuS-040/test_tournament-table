@@ -15,8 +15,11 @@
 </head>
 
 <body class="page-body">
-    <div class="main-section">
+    <h1 class="visiually-hidden">Tournament</h1>
+    <div class="main-section tournament">
+
         <section class="tournament-section tournament__legend-table">
+            <h2 class="visiually-hidden">Tournament Legend</h2>
             <div class="tournament__legend-round">
                 <span class="tournament__legend-desc">Round 1</span>
             </div>
@@ -40,7 +43,8 @@
             </div>
         </section>
         <section class="tournament-section tournament__table">
-            <div class="tournament-table__wrapper tournament__round tournament__round--one west-side">
+            <h2 class="visiually-hidden">Tournament Table</h2>
+            <div class="tournament__table-wrapper tournament__round tournament__round--one west-side">
                 <ul class="tournament__matchup" data-match="1" data-round="1">
                     <li class="tournament__team" data-team="1">
                         <input type="text" class="tournament__team-input" value="Команда 1" data-default="Команда 1">
@@ -133,7 +137,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--one east-side">
+            <div class="tournament__table-wrapper tournament__round tournament__round--one east-side">
                 <ul class="tournament__matchup" data-match="5" data-round="1">
                     <li class="tournament__team" data-team="9">
                         <input type="text" class="tournament__team-input" value="Команда 9" data-default="Команда 9">
@@ -235,7 +239,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--two west-side">
+            <div class="tournament__table-wrapper tournament__round tournament__round--two west-side">
                 <ul class="tournament__matchup" data-match="1" data-round="2">
                     <li class="tournament__team" data-team="1">
                         <span class="tournament__team-name"></span>
@@ -263,7 +267,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--two east-side">
+            <div class="tournament__table-wrapper tournament__round tournament__round--two east-side">
                 <ul class="tournament__matchup" data-match="3" data-round="2">
                     <li class="tournament__team" data-team="5">
                         <span class="tournament__team-name"></span>
@@ -291,7 +295,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--three west-side">
+            <div class="tournament__table-wrapper tournament__round tournament__round--three west-side">
                 <ul class="tournament__matchup" data-match="1" data-round="3">
                     <li class="tournament__team" data-team="1">
                         <span class="tournament__team-name"></span>
@@ -306,7 +310,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--three east-side">
+            <div class="tournament__table-wrapper tournament__round tournament__round--three east-side">
                 <ul class="tournament__matchup" data-match="2" data-round="3">
                     <li class="tournament__team" data-team="3">
                         <span class="tournament__team-name"></span>
@@ -321,7 +325,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tournament-table__wrapper tournament__round tournament__round--four final">
+            <div class="tournament__table-wrapper tournament__round tournament__round--four final">
                 <ul class="tournament__matchup" data-match="1" data-round="4">
                     <li class="tournament__team" data-team="1">
                         <span class="tournament__team-name"></span>
@@ -343,8 +347,7 @@
         </section>
     </div>
 
+    <script type="module" src="js/script.js"></script>
 </body>
-
-<script type="module" src="js/script.js"></script>
 
 </html>
