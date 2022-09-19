@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function (evt) {
 document.addEventListener('click', function (evt) {
     if (evt.target && evt.target.classList.contains('tournament__button-play-match')) {
         let target = evt.target
-        let matchRound = target.closest('.tournament-table__wrapper');
         let parent = target.closest('.tournament__matchup');
         let teamArr = parent.querySelectorAll('.tournament__team')
         let allMatchArr = document.querySelectorAll('.tournament__matchup')
@@ -139,7 +138,6 @@ document.addEventListener('click', function (evt) {
             let firstTeamScore = teamArr[0].querySelector('.tournament__team-score').textContent;
             let SecondTeamScore = teamArr[1].querySelector('.tournament__team-score').textContent;
             if (firstTeamScore == SecondTeamScore) {
-                console.log('счет одинаковый');
                 setTimeout(() => {
                     teamArr.forEach(team => {
                         team.classList.remove('battle')
@@ -233,19 +231,10 @@ document.addEventListener('click', function (evt) {
         }
         startMatch();
     }
-
-
-
-
-
-
-
-
-
 })
 
 document.addEventListener('input', function (evt) {
-    // ввод своих названий команд
+
     if (evt.target && evt.target.classList.contains('tournament__team-input')) {
         let target = evt.target
         let parentTeam = target.closest('.tournament__team')
@@ -253,7 +242,6 @@ document.addEventListener('input', function (evt) {
         parentTeamName.textContent = target.value;
 
         let inputTextArr = target.value.split('')
-        console.log(inputTextArr);
         if (target.value.length > MAX_TEAM_NAME) {
             inputTextArr.splice(MAX_TEAM_NAME, 1);
             target.value = inputTextArr.join('')
@@ -273,9 +261,7 @@ document.addEventListener('change', function (evt) {
         }
     }
 
-
-
-    // ввод своих названий команд
+    // загрузка логотипов
     if (evt.target && evt.target.classList.contains('tournament__team-logo-input')) {
         let target = evt.target
         let fileLength = 0;
@@ -294,7 +280,6 @@ document.addEventListener('change', function (evt) {
                     }
                     const reader = new FileReader();
                     reader.onload = ev => {
-                        console.log(ev.target.result);
                         parentTeam.style.backgroundImage = `url(${ev.target.result})`;
                     }
                     reader.readAsDataURL(file);
